@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- -*- coding: utf-8 -*- -->
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="css/default.css" type="text/css" />
+
+<style>
+.page {
+  width: 100%;
+}
+.tabs {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabs td {
+  border: 1px solid #ccc;
+  height: 30px;
+  font-size: 12pt;
+  color: gray;
+  text-align: center;
+  cursor: pointer;
+}
+.tabselected {
+  font-weight: bold;
+  color: #000 !important;
+  border-bottom-color: transparent !important;
+}
+td.panes {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+div.panes {
+  display: none;
+}
+.contents {
+  position: relative;
+  padding: 5px 10px;
+  text-align: left;
+  width: calc(100vw - 36px);
+  min-height: calc(100vh - 110px);
+}
+.frame11 {
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 100%;
+  height: calc(100vh - 150px);
+  background-color: #f0f0f0;
+}
+.frame12 {
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 100%;
+  height: 200px;
+  background-color: #f0f0f0;
+}
+.frame13 {
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+.frame21 {
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 360px;
+  height: calc(100vh - 150px);
+  background-color: #f0f0f0;
+}
+.frame22 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 360px;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+.frame23 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #e8e8e8;
+  width: 360px;
+  height: 120px;
+  background-color: #f0f0f0;
+}
+
+.button {
+  height: 22px;
+  line-height: 1.2em;
+}
+</style>
+
+<title>ServComp</title>
+
+</head>
+
+<body>
+
+<h3>サービスコンピューティング Web教材</h3>
+
+<div class="page">
+
+<table class="tabs">
+  <tr>
+    <td class="none" name="hello" onclick="focus_tab(this);">Hello</td>
+    <td class="none" name="9x9" onclick="focus_tab(this);">9x9</td>
+    <td class="none" name="fact" onclick="focus_tab(this);">Fact</td>
+    <td class="none" name="input" onclick="focus_tab(this);">Input</td>
+    <td class="none" name="regexp" onclick="focus_tab(this);">RegExp</td>
+    <td class="none" name="cart" onclick="focus_tab(this);">Cart</td>
+    <td class="none" name="db" onclick="focus_tab(this);">DB</td>
+    <td class="none" name="websec" onclick="focus_tab(this);">WebSec</td>
+    <td class="none" name="csrf" onclick="focus_tab(this);">CSRF</td>
+    <td class="none" name="yaml" onclick="focus_tab(this);">YAML</td>
+    <td class="none" name="dom" onclick="focus_tab(this);">DOM</td>
+    <td class="gray" name="log" onclick="focus_tab(this);">Log</td>
+  </tr>
+  <tr>
+    <td colspan="12" class="panes">
+  
+<div id="hello" class="panes none">
+  <div class="contents">
+    <h4>Welcome to Service Computing!</h4>
+    <iframe class="frame11" src="index.py?action=hello"></iframe>
+  </div>
+</div>
+
+<div id="9x9" class="panes none">
+  <div class="contents">
+    <h4>九九表 (ベタ書き版 or 計算版)</h4>
+    <iframe class="frame11" src="index.py?action=9x9"></iframe>
+  </div>
+</div>
+
+<div id="fact" class="panes none">
+  <div class="contents">
+    <h4>階乗表 (演習問題)</h4>
+    <iframe class="frame11" src="index.py?action=fact"></iframe>
+  </div>
+</div>
+
+<div id="input" class="panes none">
+  <div class="contents">
+    <h4>クライアント・サーバともにチェックなし</h4>
+    <iframe class="frame23" src="index.py?action=input"></iframe>
+    <h4>クライアントチェックあり・サーバチェックなし</h4>
+    <iframe class="frame23" src="index.py?action=input&check=c"></iframe>
+    <h4>クライアントチェックなし・サーバチェックあり</h4>
+    <iframe class="frame23" src="index.py?action=input&check=s"></iframe>
+  </div>
+</div>
+
+<div id="regexp" class="panes none">
+  <div class="contents">
+    <h4>正規表現テスト</h4>
+    <iframe class="frame11" src="m_regexp.html"></iframe>
+  </div> <!-- class="contents" -->
+</div>
+
+<div id="cart" class="panes none">
+  <div class="contents">
+    <h4>セッションを用いた簡易ECカート</h4>
+    <iframe class="frame11" src="index.py?action=cart"></iframe>
+  </div>
+</div>
+
+<div id="db" class="panes none">
+  <div class="contents">
+    <h4>データベースの情報検索</h4>
+    <iframe class="frame22" src="index.py?action=db"></iframe>
+  </div>
+</div>
+
+<div id="websec" class="panes none">
+  <div class="contents">
+    <h4>XSS無防備 vs 対策済</h4>
+    <iframe class="frame23" src="index.py?action=input"></iframe>
+    <iframe class="frame23" src="index.py?action=input&xss=1"></iframe>
+    <h4>SQLインジェクション無防備 vs 対策済 (いずれもクライアント入力チェック無し)</h4>
+    <iframe class="frame22" src="index.py?action=db&check=&inject=1"></iframe>
+    <iframe class="frame22" src="index.py?action=db&check="></iframe>
+  </div>
+</div>
+
+<div id="csrf" class="panes none">
+  <div class="contents">
+    <h4>CSRF無防備ページに対して data=100 のデータを強制送信</h4>
+    <iframe class="frame12" src="index.py?action=csrf"></iframe>
+    <h4>CSRF対策済ページに対して data=100 のデータを強制送信</h4>
+    <iframe class="frame12" src="index.py?action=csrf&anticsrf=1"></iframe>
+  </div>
+</div>
+
+<div id="yaml" class="panes none">
+  <div class="contents">
+    <h4>YAMLとJSON 早わかり</h4>
+    <iframe class="frame11" src="m_yaml.html"></iframe>
+  </div> <!-- class="contents" -->
+</div>
+
+<div id="dom" class="panes none">
+  <div class="contents">
+    <h4>DOM 早わかり</h4>
+    <iframe class="frame11" src="m_dom.html"></iframe>
+  </div>
+</div>
+
+<div id="log" class="panes none">
+  <div class="contents">
+    <h4>サーバーログ</h4>
+    <img class="viewbutton" style="right:40px;" src="images/log32b.png" onclick="load_log(this)" title="サーバーログを取得します" />
+    <img class="viewbutton" src="images/trash32r.png" onclick="delete_log(this)" title="サーバーログをクリアします" />
+    <textarea class="frame11" readonly="readonly"></textarea>
+  </div>
+</div>
+
+</div> <!-- class="panes" -->
+
+    </td>
+  </tr>
+</table>
+
+</div> <!-- class="page" -->
+  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+<!--
+//========================================
+// Global Variables
+
+var user_agent = window.navigator.userAgent
+
+//========================================
+// Common Libraries
+
+//========================================
+// Page Control
+
+function focus_tab(self) {
+  //alert(document.cookie)
+  if (self===undefined) {
+    self = $('.tabs tr:eq(0)').children(':eq(0)')
+    name = self.attr('name')
+  } else {
+    self = $(self)
+    name = self.attr('name')
+  }
+  //console.log(name)
+  //$.get("index.py", {action:'tab',name:name}, ()=>false)
+  
+  $('.tabs tr:eq(0) td').removeClass('tabselected')
+  self.addClass('tabselected')
+  
+  $('div.panes').hide()
+  $('#'+name).show()
+}
+
+//========================================
+// View Server Log
+
+function load_log(self) {
+  $.get("index.py", {action:'loadlog',ajax:1}, function(log) {
+    if (! log) return
+    $(self).siblings('textarea').focus().val(log)
+  })
+}
+
+function delete_log(self) {
+  if (! confirm("サーバーログをクリアして良いですか？")) return
+  $.get("index.py", {action:'dellog',ajax:1}, function() {
+    $(self).siblings('textarea').focus().val('')
+  })
+}
+
+//========================================
+// Initialization
+
+function initialize() {
+  console.log('initialize')
+  focus_tab()
+}
+
+$(function(){
+  initialize()
+})
+// -->
+</script>
+
+</body>
+</html>

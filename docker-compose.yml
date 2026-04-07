@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    ports:
+      # ローカルの8080番ポートをコンテナの80番に繋ぐ（ポート競合回避）
+      - "8080:80"
+    volumes:
+      # ローカルのscフォルダをコンテナ内のhtdocs/scに同期する
+      - ./sc:/usr/local/apache2/htdocs/sc

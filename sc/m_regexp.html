@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<link rel="stylesheet" href="css/default.css" type="text/css" />
+<style>
+.regexpblock {
+  display: block;
+  margin-top: 10px;
+}
+.regexpinout {
+  font-size: 14pt;
+  font-weight: bold;
+  width: 400px !important;
+}
+.help {
+  font-size: 10pt;
+}
+.convbutton {
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 20px;
+  line-height: 1.0em;
+}
+table.legend {
+  border-collapse: collapse;
+  width: 540px;
+}
+.legend th,td {
+  font-size: 10pt;
+}
+</style>
+
+<title>正規表現</title>
+</head>
+<body>
+
+<h4>正規表現</h4>
+
+<div style="display:inline-block;vertical-align:top;">
+
+<div class="regexpblock">
+正規表現<br />
+<span class="help">/abc/ ではなく 両側の / を除いた abc と書くこと</span><br />
+<input id="regexp" class="regexpinout" type="text" value="" />
+<div id="error1" class="help" style="color:red;width:400px;"></div>
+</div>
+
+<div class="regexpblock">
+マッチ対象文字列<br />
+<input id="match" class="regexpinout" type="text" value="" />
+</div>
+
+<button class="applybutton" style="margin-top:20px;" onclick="match_regexp(this)" title="クリックすると下記にマッチ結果が表示されます">マッチ</button>
+
+<div class="regexpblock" style="height:100px;">
+マッチ結果<br />
+<span class="help">1行目はマッチ文字列、2行目以降は () 順にマッチ結果を表示</span><br />
+<div id="error2" class="help" style="color:red;;width:400px;"></div>
+<textarea id="result" class="regexpinout" style="height:100%">
+</textarea>
+</div>
+
+</div>
+
+<div style="display: inline-block;">
+
+<div class="regexpblock">
+正規表現の記法<br />
+<span class="help">下記以外にもいろいろな機能があるが、詳細は省略</span><br />
+<table class="legend">
+<tr><th style="width:80px;">正規表現</th><th style="width:460px;">記法</th></tr>
+<tr>
+<td>基本</td>
+<td>
+. ＝任意の1文字、
+[xyz] ＝指定された文字のどれか、
+[a-z] ＝文字の範囲を指定、
+\w ＝英数文字、
+\d ＝半角数字文字、
+\s ＝空白文字、
+\b ＝単語境界、
+(PAT1|PAT2) ＝PAT1/PAT2パターンのいずれか
+</td>
+</tr>
+<tr>
+<td>直前の式の<br />繰り返し</td>
+<td>
+? ＝0回または1回、
+* ＝0回以上、
++ ＝1回以上、
+{n} ＝n回、
+{n,} ＝n回以上、
+{n,m} ＝n回〜m回
+</td>
+</tr>
+<tr>
+<td>先頭・末尾<br />固定</td>
+<td>
+^ ＝先頭固定、
+$ ＝末尾固定
+</td>
+</tr>
+<tr>
+<td>括弧指定</td>
+<td>
+() で括ったパターンは、マッチ後の結果としてその部分文字列を分離して扱える。
+(a+)(b+)(c+) パターンで aaabbc 文字列にマッチさせると、３つの括弧に対応する部分文字列を aaa、bb、c として取り出すことができる。実際にやってみよう。<br />
+１つのパターンの中で、前方で指定した () でマッチした文字列を参照する「前方参照」もできるが、ここでは触れない。各自調べてみる。
+</td>
+</tr>
+<tr>
+<td>エスケープ</td>
+<td>
+. * [ ( などの正規表現文字を元々の1文字として扱うには、 \. \* \[ \( など、\ でエスケープする。実際にやってみよう。
+</td>
+</tr>
+</table>
+</div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/default.js"></script>
+
+<script type="text/javascript">
+function match_regexp(self) {
+  clear_error()
+  let regex = new RegExp()
+  let reinput = $('#regexp').val()
+  let str = $('#match').val()
+  try {
+    regex.compile(reinput)
+  } catch(e) {
+    $('#error1').text(e)
+    return
+  }
+
+  let result = regex.exec(str)
+  console.log(result)
+  if (result == null) {
+    $('#error2').text('マッチに失敗しました')
+    $('#result').val('')
+  } else {
+    $('#result').val(result.join('\n'))
+  }
+}
+
+function clear_error() {
+  $('#error1').text('')
+  $('#error2').text('')
+}
+</script>
+
+</body>
+</html>

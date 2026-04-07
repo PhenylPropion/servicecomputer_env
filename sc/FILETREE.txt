@@ -1,0 +1,68 @@
+sc
+├─ FILETREE.txt
+├─ README.txt
+├─ csrftest.html
+├─ css
+│   └─ default.css
+├─ favicon.ico
+├─ images
+│   ├─ html16b.png
+│   ├─ html16r.png
+│   ├─ html32b.png
+│   ├─ html32r.png
+│   ├─ log32b.png
+│   ├─ reloadmenu.png
+│   └─ trash32r.png
+├─ index.html
+├─ index.py
+├─ js
+│   └─ default.js
+├─ log
+│   └─ SC.log
+├─ m_9x9.py
+├─ m_cart.py
+├─ m_cookie.py
+├─ m_csrf.py
+├─ m_db.py
+├─ m_dellog.py
+├─ m_dom.html
+├─ m_fact.py
+├─ m_fact_answer.py
+├─ m_fact_org.py
+├─ m_hello.py
+├─ m_input.py
+├─ m_loadlog.py
+├─ m_regexp.html
+├─ m_test.py
+├─ m_websec.py
+├─ m_yaml.html
+├─ mylib.py
+├─ mysession.py
+├─ privilege.sql
+├─ pymysql
+│   ├─ __init__.py
+│   ├─ _auth.py
+│   ├─ _compat.py
+│   ├─ _socketio.py
+│   ├─ charset.py
+│   ├─ connections.py
+│   ├─ constants
+│   │   ├─ CLIENT.py
+│   │   ├─ COMMAND.py
+│   │   ├─ CR.py
+│   │   ├─ ER.py
+│   │   ├─ FIELD_TYPE.py
+│   │   ├─ FLAG.py
+│   │   ├─ SERVER_STATUS.py
+│   │   └─ __init__.py
+│   ├─ converters.py
+│   ├─ cursors.py
+│   ├─ err.py
+│   ├─ optionfile.py
+│   ├─ protocol.py
+│   ├─ times.py
+│   └─ util.py
+├─ session
+└─ student.sql
+
+7 directories, 57 files

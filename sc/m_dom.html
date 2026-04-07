@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<link rel="stylesheet" href="css/default.css" type="text/css" />
+<style>
+
+</style>
+
+<title>DOM</title>
+</head>
+<body>
+<h4>Javascriptのコードを入力して実行します</h4>
+<input id="script" style="width:500px;" type="text" name="%(script)s" value="" />
+<input type="submit" value="実行" onclick="getElementById('result').value = eval(getElementById('script').value);return false;" />
+<br />
+<textarea id="result" style="width:500px;height:60px;" placeholder="(実行結果)"></textarea>
+<div>
+<ul style="font-size:80%;">
+<li>IDを指定して参照・変更: document.getElementById('タグ名')</li>
+<li>タグ名を指定して参照・変更: document.getElementsByTagName('タグ名')</li>
+<li>取得した値をダイアログで表示: alert(…式を記述…)</li>
+<li>以下、コード例 [C:Create, R:Retrieve, U:Update, D:Delete]</li>
+  <ul style="margin:0;padding:0;list-style:none;">
+  <li>[R] getElementById('mikanrow').innerHTML;</li>
+  <li>[R] document.getElementsByTagName('tr')[0].innerHTML;</li>
+  <li>[R] document.getElementsByTagName('tr')[0].children[0].innerHTML;</li>
+  <li>[R] getElementById('header').parentNode.nodeName;
+  <li>[R] getElementById('mikanrow').children[1].parentNode.nodeName;</li>
+  <li>[R] alert(document.getElementsByTagName('h4')[0].innerHTML);</li>
+  <li>[U] getElementById('mikan').style.color = 'orange';</li>
+  <li>[U] getElementById('applerow').style.fontWeight = 'bold';</li>
+  <li>[U] getElementById('applerow').children[0].style.backgroundColor = 'red';</li>
+  <li>[C] getElementById('form').appendChild(document.createElement('div')).appendChild(document.createTextNode('備考'));</li>
+  <li>[D] getElementById('totalrow').remove();</li>
+  </ul>
+</ul>
+</div>
+
+<hr />
+
+<div id="cart" style="display:inline-block;vertical-align:top;">
+  <div style="width:200px;">
+    <h4>買い物かご</h4>
+    <form id="form" method="POST" action="cart.py">
+      <table border="1">
+        <thead>
+        	<tr id="header">
+        	  <th>商品名</th><th>単価</th><th>個数</th><th>小計</th>
+        	</tr>
+        </thead>
+        <tbody>
+        	<tr id="mikanrow">
+        	  <td id="mikan">みかん</td>
+        	  <td class="right">80</td>
+        	  <td class="right">4</td>
+        	  <td class="right">320</td>
+        	</tr>
+        	<tr id="applerow">
+        	  <td id="apple">りんご</td>
+        	  <td class="right">90</td>
+        	  <td class="right">3</td>
+        	  <td class="right">270</td>
+        	</tr>
+  	<tr id="totalrow">
+  	  <td colspan="3">計</td>
+  	  <td class="right">590</td>
+  	</tr>
+       </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div style="display:inline-block;vertical-align:top;">
+  <pre id="source" style="font-size:12pt;background-color:khaki;width:600px;"></pre>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/default.js"></script>
+
+<script type="text/javascript">
+$(function(){ $('#source').text($('#cart').html()) })
+</script>
+
+</body>
+</html>
