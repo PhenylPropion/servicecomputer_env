@@ -1213,9 +1213,7 @@ require(['jquery', 'core/custom_interaction_events'], function($, CustomEvents) 
     CustomEvents.define('#single_select69d45b23c726e30', [CustomEvents.events.accessibleChange]);
     $('#single_select69d45b23c726e30').on(CustomEvents.events.accessibleChange, function() {
         var ignore = $(this).find(':selected').attr('data-ignore');
-        if (typeof ignore === typeof undefined) {
-            $('#single_select_f69d45b23c726e29').submit();
-        }
+        
     });
 });
 ;
@@ -1232,9 +1230,7 @@ require(['jquery', 'core/custom_interaction_events'], function($, CustomEvents) 
     CustomEvents.define('#single_select69d45b23c726e43', [CustomEvents.events.accessibleChange]);
     $('#single_select69d45b23c726e43').on(CustomEvents.events.accessibleChange, function() {
         var ignore = $(this).find(':selected').attr('data-ignore');
-        if (typeof ignore === typeof undefined) {
-            $('#single_select_f69d45b23c726e42').submit();
-        }
+        
     });
 });
 ;

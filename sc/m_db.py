@@ -7,7 +7,7 @@ from mylib import *
 
 def connectDB():
     try:
-        conn = pymysql.connect(host="127.0.0.1",
+        conn = pymysql.connect(host="db",
                                db="student",
                                user="sample",
                                passwd="12345",
